@@ -14,9 +14,15 @@ class QueryExecutor
 
     public function switchConnection($host, $username, $password, $database, $port) {
         $this->connection = mysqli_connect($host, $username, $password, $database, $port);
+
+        if (mysqli_connect_errno())
+        {
+            echo "Failed to connect to MySQL: " . mysqli_connect_error();
+            exit();
+        }
     }
 
     public function execute($command) : bool|\mysqli_result {
-        $this->connection->query($command);
+        return $this->connection->query($command);
     }
 }
