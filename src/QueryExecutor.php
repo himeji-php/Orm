@@ -8,7 +8,7 @@ class QueryExecutor
 {
     private $connection;
 
-    public function __construct($host, $username, $password, $database, $port) {
+    public function __construct($host, $username, $password, $database, $port = '3306') {
         $this->switchConnection($host, $username, $password, $database, $port);
     }
 
